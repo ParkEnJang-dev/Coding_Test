@@ -1,6 +1,6 @@
-package min;
+package ch4.pb6;
 
-public class programmers_12926 {
+public class programmers_min_12926 {
     public static void main(String[] args) {
         String s = "a B z";
         solution(s, 4);
