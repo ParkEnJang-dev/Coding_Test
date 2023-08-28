@@ -14,7 +14,7 @@ public class Programmers_min_72411 {
     static class Solution {
         public String[] solution(String[] orders, int[] course) {
             //1. 첫번째 인덱스 부터 첫 원소
-            HashSet<String> foodCourses = new HashSet<>();
+            ArrayList<FoodCourse> foodCourses = new ArrayList<>();
 
             for (int i = 0; i < orders.length - 1; i++) {
 
@@ -31,12 +31,11 @@ public class Programmers_min_72411 {
                         }
 
                     }
-
-//                    System.out.println(sb.toString());
+                    System.out.println(sb.toString());
                     selectFoodCourse(sb.toString(), foodCourses);
                 }
             }
-            String[] answer = foodCourses.stream().filter(s -> {
+            /*String[] answer = foodCourses.stream().filter(s -> {
                 for (int i : course) {
                     if (s.length() == i) {
                         return true;
@@ -45,21 +44,41 @@ public class Programmers_min_72411 {
                 return false;
             }).toArray(String[]::new);
 
-            Arrays.sort(answer);
+            Arrays.sort(answer);*/
 
-            for (String s : answer) {
-                System.out.println(s);
+            for (FoodCourse foodCourse : foodCourses) {
+                System.out.println(foodCourse.course + " " + foodCourse.count);
             }
 
-            return answer;
+            return null;
         }
 
-        public void selectFoodCourse(String curCourse, HashSet<String> foodCourses) {
+        public void selectFoodCourse(String curCourse, ArrayList<FoodCourse> foodCourses) {
             if (curCourse.length() < 2) {
                 return;
             }
+            char[] chars = curCourse.toCharArray();
+            Arrays.sort(chars);
+            curCourse = new String(chars);
 
-            foodCourses.add(curCourse);
+            for (FoodCourse foodCourse : foodCourses) {
+                if (foodCourse.course.equals(curCourse)) {
+                    foodCourse.count++;
+                    return;
+                }
+            }
+
+            foodCourses.add(new FoodCourse(curCourse, 1));
+        }
+
+        static class FoodCourse {
+            String course;
+            int count;
+
+            FoodCourse(String course, int count) {
+                this.course = course;
+                this.count = count;
+            }
         }
 
     }
