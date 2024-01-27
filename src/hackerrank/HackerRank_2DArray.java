@@ -3,9 +3,20 @@ package hackerrank;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class HackerRank_2DArray {
     public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+        int sum = 0;
+
+        System.out.println(sum);
+
 
 
         List<List<Integer>> arrayLists = new ArrayList<>();
